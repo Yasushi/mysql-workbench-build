@@ -1,0 +1,12 @@
+diff --git a/build/fixup_python_paths.sh b/build/fixup_python_paths.sh
+index 909ed6217..113be0f03 100755
+--- a/build/fixup_python_paths.sh
++++ b/build/fixup_python_paths.sh
+@@ -11,6 +11,7 @@ for file in $*; do
+   if [ -f $file ]; then
+     install_name_tool -change "@executable_path/../Frameworks/Python" "$new_path" $file
+     install_name_tool -change "@rpath/Python"                         "$new_path" $file
++    install_name_tool -change "@rpath/Versions/3.11/Python"           "$new_path" $file
+     install_name_tool -change "Python"                                "$new_path" $file
+   fi
+ done
