@@ -1,0 +1,78 @@
+--- a/MySQLWorkbench.xcodeproj/project.pbxproj	1970-01-01 09:00:01.000000000 +0900
++++ b/MySQLWorkbench.xcodeproj/project.pbxproj	2024-03-12 21:18:32.867455445 +0900
+@@ -2687,6 +2687,12 @@
+ 		44FFC3D91AA0BC3A00950A48 /* sqlide_power_import_export_be.py in Copy Files (python plugins) */ = {isa = PBXBuildFile; fileRef = 44FFC3D31AA0BA1F00950A48 /* sqlide_power_import_export_be.py */; };
+ 		44FFC3DA1AA0BC3A00950A48 /* sqlide_power_import_wizard.py in Copy Files (python plugins) */ = {isa = PBXBuildFile; fileRef = 44FFC3D41AA0BA1F00950A48 /* sqlide_power_import_wizard.py */; };
+ 		75C847F51067E9C70067947D /* opts.py in Resources */ = {isa = PBXBuildFile; fileRef = 75C847F21067E9C70067947D /* opts.py */; };
++		77CBEEA82B9B310400EB76D6 /* libmysqlclient.dylib in Copy Files (dylibs) */ = {isa = PBXBuildFile; fileRef = 270124232099F9D100FE448E /* libmysqlclient.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
++		77CBEEA92B9B310400EB76D6 /* libmysqlcppconn.dylib in Copy Files (dylibs) */ = {isa = PBXBuildFile; fileRef = 271F7448239117CD005B0EEB /* libmysqlcppconn.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
++		77CBEEAB2B9B317900EB76D6 /* libzstd.1.dylib in Copy Files (dylibs) */ = {isa = PBXBuildFile; fileRef = 77CBEEAA2B9B317900EB76D6 /* libzstd.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
++		77CBEEAC2B9B318A00EB76D6 /* libssh.dylib in Copy Files (dylibs) */ = {isa = PBXBuildFile; fileRef = 27E7D796237BF7560006BD1B /* libssh.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
++		77CBEEAD2B9B319F00EB76D6 /* libzip.dylib in Copy Files (dylibs) */ = {isa = PBXBuildFile; fileRef = 27D6EE502099E43D0050B26B /* libzip.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
++		77CBEEAE2B9B31B100EB76D6 /* libgdal.dylib in Copy Files (dylibs) */ = {isa = PBXBuildFile; fileRef = 27D6EE402099E2070050B26B /* libgdal.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+ 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+ 		8E4E698F25D6A63B0060A2FA /* Python.framework in Copy Files (dylibs) */ = {isa = PBXBuildFile; fileRef = 8E4E66F425D697060060A2FA /* Python.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+ 		8E6F7E842268AEBE00DAFB62 /* grt_inspector_value_specs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F7E832268AEBE00DAFB62 /* grt_inspector_value_specs.cpp */; };
+@@ -3954,6 +3960,12 @@
+ 			dstPath = "";
+ 			dstSubfolderSpec = 10;
+ 			files = (
++				77CBEEAE2B9B31B100EB76D6 /* libgdal.dylib in Copy Files (dylibs) */,
++				77CBEEAD2B9B319F00EB76D6 /* libzip.dylib in Copy Files (dylibs) */,
++				77CBEEAC2B9B318A00EB76D6 /* libssh.dylib in Copy Files (dylibs) */,
++				77CBEEAB2B9B317900EB76D6 /* libzstd.1.dylib in Copy Files (dylibs) */,
++				77CBEEA82B9B310400EB76D6 /* libmysqlclient.dylib in Copy Files (dylibs) */,
++				77CBEEA92B9B310400EB76D6 /* libmysqlcppconn.dylib in Copy Files (dylibs) */,
+ 				27DD507620B56D8D00A8F17A /* libwbssh.dylib in Copy Files (dylibs) */,
+ 				27183E891DA54E0100257580 /* libmtemplate.dylib in Copy Files (dylibs) */,
+ 				27E0E23015517BAE0073FD6F /* libparsers.dylib in Copy Files (dylibs) */,
+@@ -6708,6 +6720,7 @@
+ 		75C847F21067E9C70067947D /* opts.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = opts.py; path = plugins/wb.admin/backend/opts.py; sourceTree = "<group>"; };
+ 		75C847F41067E9C70067947D /* wb_admin_config_file_be.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = wb_admin_config_file_be.py; path = plugins/wb.admin/backend/wb_admin_config_file_be.py; sourceTree = "<group>"; };
+ 		75C847F81067E9DF0067947D /* wb_admin_config_file_ui.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = wb_admin_config_file_ui.py; path = plugins/wb.admin/frontend/wb_admin_config_file_ui.py; sourceTree = "<group>"; };
++		77CBEEAA2B9B317900EB76D6 /* libzstd.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libzstd.1.dylib; path = "3rd-party-ce/lib/libzstd.1.dylib"; sourceTree = "<group>"; };
+ 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+ 		8D1107320486CEB800E47090 /* MySQLWorkbench.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySQLWorkbench.app; sourceTree = BUILT_PRODUCTS_DIR; };
+ 		8E4E66F425D697060060A2FA /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python.framework; path = "3rd-party-ce/Python/Python.framework"; sourceTree = SOURCE_ROOT; };
+@@ -8203,6 +8216,7 @@
+ 		29B97314FDCFA39411CA2CEA /* MySQLWorkbench */ = {
+ 			isa = PBXGroup;
+ 			children = (
++				77CBEEAA2B9B317900EB76D6 /* libzstd.1.dylib */,
+ 				2744E6780FC1831900E85C33 /* ScintillaFramework.xcodeproj */,
+ 				2B825EBD0E0B68EC00BE52DF /* Backend */,
+ 				2B1E2FCC172F03670037D3DD /* Commercial Plugins */,
+@@ -13206,6 +13220,7 @@
+ 				2B4B52EB122F102000F1EA6B /* Copy Other Resource Data Folders */,
+ 				169CCC8F0F0121BC005152CD /* Copy and fix embedded dylibs and binaries */,
+ 				2BCD496215BDD56A00F88A38 /* Copy Extra Files */,
++				771CBCF42B9F438700036665 /* Code Sign fixed dylibs and binaries */,
+ 			);
+ 			buildRules = (
+ 				2B02FED9183E65D400770CC0 /* PBXBuildRule */,
+@@ -14514,6 +14529,25 @@
+ 			shellScript = "# Install commercial plugins (dylibs)\n\n# Put all commercial plugin dylibs in the Input Files list below.\n# For dylibs, you must add it as a dependency in the MySQLWorkbenchCom scheme (not in the project dependencies)\n# so that they get built only for commercial builds\ni=0\nwhile true; do\n    path=$(eval \"echo \\$SCRIPT_INPUT_FILE_$i\")\n    if test \"$path\" = \"\"; then\n        break\n    fi\n    if [ -f $path -o -d $path ]; then\n        echo \"Copy $path to $BUILT_PRODUCTS_DIR/$PLUGINS_FOLDER_PATH\"\n        cp -r $path $BUILT_PRODUCTS_DIR/$PLUGINS_FOLDER_PATH\n    fi\n    i=$(($i+1))\ndone\n";
+ 			showEnvVarsInLog = 0;
+ 		};
++		771CBCF42B9F438700036665 /* Code Sign fixed dylibs and binaries */ = {
++			isa = PBXShellScriptBuildPhase;
++			buildActionMask = 2147483647;
++			files = (
++			);
++			inputFileListPaths = (
++			);
++			inputPaths = (
++			);
++			name = "Code Sign fixed dylibs and binaries";
++			outputFileListPaths = (
++			);
++			outputPaths = (
++			);
++			runOnlyForDeploymentPostprocessing = 0;
++			shellPath = /bin/bash;
++			shellScript = "NEWLIBPATH=${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}\nEXEPATH=${BUILT_PRODUCTS_DIR}/${EXECUTABLE_FOLDER_PATH}\nRESLIBPATH=${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/libraries\n\n/usr/bin/codesign --force --sign - --timestamp\\=none --preserve-metadata\\=identifier,entitlements,flags --generate-entitlement-der $NEWLIBPATH/*.{dylib,so} $EXEPATH/* $RESLIBPATH/*.so\n";
++			showEnvVarsInLog = 0;
++		};
+ /* End PBXShellScriptBuildPhase section */
+ 
+ /* Begin PBXSourcesBuildPhase section */
