@@ -1,41 +1,10 @@
 # -*- text -*-
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> { }
+, packages
+}:
 
 with pkgs;
 let
-  python-framework = stdenv.mkDerivation rec {
-    pname = "python-framework";
-    version = "3.11.8";
-    src = fetchFromGitHub {
-      owner = "gregneagle";
-      repo = "relocatable-python";
-      rev = "67648ffc91aef264f0f8eb2eba14f9ed126f4168";
-      hash = "sha256-oVnFscoPuPkAtbaHe24PNqMtngbJ7h8C5wB+FUR7CS0=";
-    };
-    buildInputs = [ cacert ];
-    phases = [ "unpackPhase" "installPhase" ];
-    installPhase = ''
-      runHook preInstall
-      mkdir -p $out
-      ./make_relocatable_python_framework.py --python-version=3.11.8 --os-version=11 --destination=$out
-      runHook postInstall
-    '';
-  };
-
-  mysql-connector-cpp = stdenv.mkDerivation rec {
-    pname = "mysql-connector-cpp";
-    version = "1.1.13";
-    src = fetchFromGitHub {
-      owner = "mysql";
-      repo = "mysql-connector-cpp";
-      rev = "1.1.13";
-      sha256 = "sha256-4S+pRz/E7uJ/smE2w7TMSpwQsQ5hHY8DLwr7/pilccg=";
-    };
-    nativeBuildInputs = [ cmake ];
-    buildInputs = [ boost mysql80 ];
-    cmakeFlags = [ "-DMYSQL_LIB_DIR=${mysql80}/lib" ];
-  };
-
   helper = stdenv.mkDerivation {
     name = "helper functions";
     phases = [ "fixupPhase" ];
@@ -62,11 +31,11 @@ let
         cp -n ${sqlite.out}/lib/libsqlite3.0.dylib $sourceRoot/3rd-party-ce/lib/libsqlite3.so
         cp -n ${darwin.libiconv}/lib/libiconv.2.4.0.dylib $sourceRoot/3rd-party-ce/lib/libiconv.2.dylib
         cp -n ${zstd.out}/lib/libzstd.1.5.5.dylib $sourceRoot/3rd-party-ce/lib/libzstd.1.dylib
-        cp -n ${mysql-connector-cpp}/lib/libmysqlcppconn.7.1.1.13.dylib $sourceRoot/3rd-party-ce/lib/libmysqlcppconn.dylib
+        cp -n ${packages.mysql-connector-cpp}/lib/libmysqlcppconn.7.1.1.13.dylib $sourceRoot/3rd-party-ce/lib/libmysqlcppconn.dylib
         cp -n ${antlr4_11.runtime.cpp}/lib/libantlr4-runtime.4.11.1.dylib $sourceRoot/3rd-party-ce/lib/libantlr4-runtime.dylib
         cp -n ${antlr4_11.jarLocation} $sourceRoot/3rd-party-ce/bin/antlr-4.11.1-complete.jar
 
-        cp -R ${python-framework}/Python.framework $sourceRoot/3rd-party-ce/Python/
+        cp -R ${packages.python-framework}/Python.framework $sourceRoot/3rd-party-ce/Python/
 
         chmod -R u+w \
           $sourceRoot/3rd-party-ce/bin/*.jar \
@@ -90,7 +59,7 @@ let
         ln -s ${unixODBC}/include/{sql*,unixodbc}.h $sourceRoot/3rd-party-ce/include/
         ln -s ${mysql80}/include/mysql $sourceRoot/3rd-party-ce/include/
         ln -s ${antlr4_11.runtime.cpp.dev}/include/antlr4-runtime $sourceRoot/3rd-party-ce/include/
-        ln -s ${mysql-connector-cpp}/include/* $sourceRoot/3rd-party-ce/include/
+        ln -s ${packages.mysql-connector-cpp}/include/* $sourceRoot/3rd-party-ce/include/
       }
       fixJavaPath() {
         sed -i.bak -e 's! java -jar! ${zulu17}/bin/java -jar!' $sourceRoot/library/parsers/grammars/build-parsers-mac
@@ -124,8 +93,8 @@ mkShell {
     antlr4_11
     antlr4_11.runtime.cpp
     zulu17
-    mysql-connector-cpp
-    python-framework
+    packages.mysql-connector-cpp
+    packages.python-framework
   ];
 
   src = fetchFromGitHub {
