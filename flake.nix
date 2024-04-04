@@ -9,7 +9,20 @@
   outputs = { self, nixpkgs }:
     let
       systems = [ "x86_64-darwin" "aarch64-darwin" ];
-      eachSystem = f: builtins.foldl' (a: b: a // b) { } (map f systems);
+      eachSystem = f:
+        let
+          op = attrs: system:
+            let
+              ret = f system;
+              op = attrs: key: attrs //
+                {
+                  ${key} = (attrs.${key} or { })
+                    // { ${system} = ret.${key}; };
+                };
+            in
+            builtins.foldl' op attrs (builtins.attrNames ret);
+        in
+        builtins.foldl' op { } systems;
     in
     eachSystem
       (system:
@@ -17,7 +30,7 @@
           pkgs = import nixpkgs { inherit system; };
         in
         rec {
-          packages.${system} = {
+          packages = {
             python-framework = with pkgs; stdenvNoCC.mkDerivation rec {
               pname = "python-framework";
               version = "3.11.8";
@@ -52,9 +65,9 @@
             };
           };
 
-          formatter.${system} = pkgs.nixpkgs-fmt;
-          devShells.${system}.default = (import ./shell.nix {
-            inherit pkgs; packages = packages.${system};
+          formatter = pkgs.nixpkgs-fmt;
+          devShells.default = (import ./shell.nix {
+            inherit pkgs; packages = packages;
           });
         });
 }
