@@ -12,8 +12,8 @@ xcodebuild -project MySQLWorkbench.xcodeproj -target parsers -configuration Rele
 xcodebuild -project MySQLWorkbench.xcodeproj -target db.mysql.parser.grt -configuration Release -arch x86_64
 xcodebuild -project MySQLWorkbench.xcodeproj -target MySQLWorkbench -configuration Release -arch x86_64
 
-xcodebuild -project MySQLWorkbench.xcodeproj -target parsers -configuration Release -arch arm64
-xcodebuild -project MySQLWorkbench.xcodeproj -target parsers -configuration Release -arch arm64
-xcodebuild -project MySQLWorkbench.xcodeproj -target db.mysql.parser.grt -configuration Release -arch arm64
-xcodebuild -project MySQLWorkbench.xcodeproj -target MySQLWorkbench -configuration Release -arch arm64
+xcodebuild -project MySQLWorkbench.xcodeproj -target parsers -configuration Release -arch $(uname -m)
+xcodebuild -project MySQLWorkbench.xcodeproj -target parsers -configuration Release -arch $(uname -m)
+xcodebuild -project MySQLWorkbench.xcodeproj -target db.mysql.parser.grt -configuration Release -arch $(uname -m)
+xcodebuild -project MySQLWorkbench.xcodeproj -target MySQLWorkbench -configuration Release -arch $(uname -m)
 ```
